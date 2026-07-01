@@ -1,19 +1,36 @@
-# Pure.Template
+# Pure.RelationalSchema.RichRelationalModel.EFCore
 
-Project template for new **Pure** ecosystem NuGet libraries.
+Entity Framework Core `DbContext` for the **Pure.RelationalSchema** RichRelationalModel — maps schema, table, column, column type, foreign key, and index entities to a relational database.
 
+[![.NET build & test](https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore/actions/workflows/build-and-test.yml/badge.svg?branch=main)](https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore/actions/workflows/build-and-test.yml)
+[![Build and Deploy](https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore/actions/workflows/publish-nuget.yml/badge.svg?branch=main)](https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore/actions/workflows/publish-nuget.yml)
+[![NuGet](https://img.shields.io/nuget/v/Pure.RelationalSchema.RichRelationalModel.EFCore)](https://www.nuget.org/packages/Pure.RelationalSchema.RichRelationalModel.EFCore)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Overview
 
-`Pure.Template` is the canonical starting point for new Pure ecosystem packages. It ships with a pre-configured project structure, `.editorconfig`, GitHub Actions workflows for build/test and NuGet publish, and standard `CODEOWNERS` and `CODE_OF_CONDUCT.md` files — so a new library can be bootstrapped consistently without manually copying configuration from another repo.
+`Pure.RelationalSchema.RichRelationalModel.EFCore` provides a ready-to-use EF Core `DbContext` for persisting relational schema metadata modelled with the Pure.RelationalSchema RichRelationalModel. It exposes typed `DbSet<T>` properties for every aggregate root and applies the full set of EF Core model configurations on startup.
 
-## What's included
+## Public API
 
-| Item | Description |
-|------|-------------|
-| `.editorconfig` | Shared code style rules for the Pure ecosystem |
-| `CODEOWNERS` | Default ownership configuration |
-| `CODE_OF_CONDUCT.md` | Contributor code of conduct |
-| `.github/workflows/build-and-test.yml` | CI workflow: restore, build, and test on every push |
-| `.github/workflows/publish-nuget.yml` | Publish workflow: triggered on git tag push |
+| Type | Kind | Description |
+|------|------|-------------|
+| `RelationalSchemaDbContext` | `sealed class` | EF Core `DbContext` for the relational schema domain. Primary constructor accepts `DbContextOptions<RelationalSchemaDbContext>`. |
+
+### `RelationalSchemaDbContext` — DbSets
+
+| Property | Entity type | Description |
+|----------|-------------|-------------|
+| `Schemas` | `SchemaEFCoreModel` | Root schema aggregates |
+| `Tables` | `TableEFCoreModel` | Tables belonging to a schema |
+| `Columns` | `ColumnEFCoreModel` | Columns belonging to a table |
+| `ColumnTypes` | `ColumnTypeEFCoreModel` | Column type lookup entries |
+| `ForeignKeys` | `ForeignKeyEFCoreModel` | Foreign key relationships |
+| `Indexes` | `IndexEFCoreModel` | Table indexes |
+
+`OnModelCreating` applies `SchemaConfiguration`, `TableConfiguration`, `ColumnConfiguration`, `ColumnTypeConfiguration`, `ForeignKeyConfiguration`, and `IndexConfiguration` from the companion configurations package.
+
+## Dependencies
+
+- [`Pure.RelationalSchema.RichRelationalModel.EFCore.Models`](https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore.Models) — EF Core entity records
+- [`Pure.RelationalSchema.RichRelationalModel.EFCore.Models.Configurations`](https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore.Models.Configurations) — EF Core type configurations
