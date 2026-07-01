@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <IsAotCompatible>false</IsAotCompatible>
+    <EnablePackageValidation>true</EnablePackageValidation>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>Pure.RelationalSchema.RichRelationalModel.EFCore</PackageId>
+    <RootNamespace>Pure.RelationalSchema.RichRelationalModel.EFCore</RootNamespace>
+    <AssemblyName>Pure.RelationalSchema.RichRelationalModel.EFCore</AssemblyName>
+    <Authors>Dmitry Kurochkin</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/kudima03/Pure.RelationalSchema.RichRelationalModel.EFCore</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference
+      Include="Pure.RelationalSchema.RichRelationalModel.EFCore.Models.Configurations"
+      Version="0.1.0-preview.0.1.2"
+    />
+  </ItemGroup>
+</Project>
