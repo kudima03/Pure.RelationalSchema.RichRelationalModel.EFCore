@@ -27,7 +27,7 @@ This is a **single-class NuGet library** that provides an EF Core `DbContext` fo
 
 **Multi-targeting:** net7.0, net8.0, net9.0, net10.0. `IsAotCompatible` is explicitly `false`.
 
-**Package validation:** `EnablePackageValidation = true`. Once the first version is published, set `PackageValidationBaselineVersion` so breaking changes fail the build.
+**Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.0.1.0`. Breaking changes fail the build.
 
 **Publishing:** triggered by pushing a semver tag matching `*.*.*`. The tag name becomes the `PackageVersion`.
 
