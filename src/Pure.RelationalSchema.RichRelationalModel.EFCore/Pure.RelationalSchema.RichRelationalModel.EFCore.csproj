@@ -19,7 +19,7 @@
   <ItemGroup>
     <PackageReference
       Include="Pure.RelationalSchema.RichRelationalModel.EFCore.Models.Configurations"
-      Version="0.1.0-preview.0.1.2"
+      Version="0.1.0-preview.0.2.0"
     />
   </ItemGroup>
 </Project>
