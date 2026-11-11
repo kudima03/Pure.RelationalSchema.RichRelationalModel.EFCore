@@ -27,7 +27,7 @@ This is a **single-class NuGet library** that provides an EF Core `DbContext` fo
 **Dependency chain:**
 - `Pure.RelationalSchema.RichRelationalModel.EFCore.Models.Configurations` supplies the `IEntityTypeConfiguration<T>` implementations (`SchemaConfiguration`, `TableConfiguration`, `ColumnConfiguration`, `ColumnTypeConfiguration`, `ForeignKeyConfiguration`, `IndexConfiguration`) and transitively brings in the EFCore model types and Pure primitive converters/comparers.
 
-**Multi-targeting:** net7.0, net8.0, net9.0, net10.0. `IsAotCompatible` is explicitly `false`.
+**Multi-targeting:** net7.0, net8.0, net9.0, net10.0, net11.0. `IsAotCompatible` is explicitly `false`.
 
 **Package validation:** `EnablePackageValidation = true` with `PackageValidationBaselineVersion = 0.1.0-preview.0.2.0`. Breaking changes fail the build.
 
